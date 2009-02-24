@@ -133,7 +133,7 @@ __END__
     %input{ :type => "text", :name => "username", :id => "username" }
   %p
     %label{ :for => "password" } password
-    %input{ :type => "text", :name => "password", :id => "password" }
+    %input{ :type => "password", :name => "password", :id => "password" }
   %p
     %input{ :type => "submit", :value => "login" }
     
