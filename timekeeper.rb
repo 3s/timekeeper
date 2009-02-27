@@ -40,6 +40,7 @@ class Timeline < ActiveRecord::Base
   validates_presence_of :user, :what, :time_spend_at
   validates_numericality_of :time_spend, :allow_nil => true
   named_scope :recent, {:limit => 10, :order => "created_at DESC"}
+  named_scope :by_customer, { :group => "customer", :order => "time_spend_at ASC"}
   
   def time_spend_at_free=(something)
     t = Time.now
@@ -96,6 +97,11 @@ get "/logout" do
   redirect("/")
 end
 
+get "/list" do
+  @list = Timeline.by_customer
+  haml :list
+end
+
 use_in_file_templates!
 
 __END__
@@ -122,7 +128,12 @@ __END__
 %h3 Latest entries
 %ul
   - @recent.each do |t|
-    %li="#{t.time_spend_at.strftime("%d/%m/%Y")} on #{t.what} for #{t.time_spend} hours by #{t.user}"
+    %li="#{t.time_spend_at.strftime("%d/%m/%Y")} on #{t.what} for #{t.customer}, #{t.time_spend} hours by #{t.user}"
+
+@@ list
+%ul
+  - @list.each do |t|
+    %li="#{t.time_spend_at.strftime("%d/%m/%Y")} on #{t.what} for #{t.customer}, #{t.time_spend} hours by #{t.user}"
 
 @@ login
 
