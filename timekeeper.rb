@@ -40,7 +40,7 @@ class Timeline < ActiveRecord::Base
   validates_presence_of :user, :what, :time_spend_at
   validates_numericality_of :time_spend, :allow_nil => true
   named_scope :recent, {:limit => 10, :order => "created_at DESC"}
-  named_scope :by_customer, { :group => "customer", :order => "time_spend_at ASC"}
+  named_scope :by_customer, { :order => "customer, time_spend_at ASC"}
   
   def time_spend_at_free=(something)
     t = Time.now
