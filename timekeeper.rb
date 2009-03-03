@@ -2,9 +2,11 @@ require "rubygems"
 require "sinatra"
 require "activerecord"
 
+
 use Rack::Session::Cookie, :secret => "phom2be7ov9vik7at9ej1celf1aish7bei6flen7"
 
 configure do
+  ActiveRecord::Base.logger = Logger.new(STDOUT)
   ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :database => "timekeeper.sqlite3")
   ActiveRecord::Schema.define do
     begin
@@ -29,6 +31,8 @@ configure do
       # table exists
     end
   end
+  ActiveRecord::Migration.verbose = true
+  ActiveRecord::Migrator.migrate("db/migrate")
 end
 
 class User < ActiveRecord::Base
