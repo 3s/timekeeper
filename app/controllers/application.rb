@@ -3,6 +3,11 @@
 
 class ApplicationController < ActionController::Base
   include Clearance::App::Controllers::ApplicationController
+
+
+  before_filter :authenticate
+
+
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details

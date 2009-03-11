@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090310154116) do
+ActiveRecord::Schema.define(:version => 20090311143729) do
+
+  create_table "timelines", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "what",          :null => false
+    t.string   "customer"
+    t.datetime "time_spend_at"
+    t.decimal  "time_spend"
+    t.text     "more"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"

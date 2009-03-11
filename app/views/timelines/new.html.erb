@@ -1,0 +1,18 @@
+<%#*<h1>Timelines#new</h1>%>
+
+<%= error_messages_for :timeline %>
+
+ <% form_for @timeline do |f| %>
+
+    <%= f.label :what %>:
+    <%= f.text_field :what %><br />
+
+    <%= f.label :customer %>:
+    <%= f.text_field :customer %><br />
+
+    <%= f.label :time_spend_at_free, "When" %>:
+    <%= f.text_field :time_spend_at_free %><br />
+
+    <%= f.submit %>
+
+  <% end %>
