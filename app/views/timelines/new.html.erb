@@ -2,17 +2,20 @@
 
 <%= error_messages_for :timeline %>
 
- <% form_for @timeline do |f| %>
+<% form_for @timeline do |f| %>
 
-    <%= f.label :what %>:
-    <%= f.text_field :what %><br />
+  <%= f.label :what %>:
+  <%= f.text_field :what %><br />
 
-    <%= f.label :customer %>:
-    <%= f.text_field :customer %><br />
+  <%= f.label :customer_name %>:
+  <%= f.text_field :customer_name %><br />
 
-    <%= f.label :time_spend_at_free, "When" %>:
-    <%= f.text_field :time_spend_at_free %><br />
+  <%= f.label :time_spend_at_free, "When" %>:
+  <%= f.text_field :time_spend_at_free %><br />
 
-    <%= f.submit %>
+  <%= f.label :time_spend %>:
+  <%= f.text_field :time_spend %> or
+  <%= f.submit "start" %><br />
 
-  <% end %>
+  <%= f.submit %><br />
+<% end %>

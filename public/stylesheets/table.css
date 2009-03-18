@@ -7,9 +7,22 @@
 
 
 body{
-	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
 	background: #E6EAE9;
+}
+
+
+h2{
+    font: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+}
+
+.log{
+    font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    color: #4f6b72;
+    text-align: right;
+    
 }
 
 
@@ -23,7 +36,7 @@ th {
 	text-transform: uppercase;
 	text-align: center;
 	padding: 6px 6px 6px 12px;
-	background: #CAE8EA url(images/bg_header.jpg) no-repeat;
+	background: #CAE8EA url(/images/bg_header.jpg) no-repeat;
 }
 
 td.a {
@@ -54,3 +67,4 @@ input {
 	background: #fff;
 	color: #4f6b72;
 }
+

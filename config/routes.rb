@@ -1,14 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.signup "/signup", :controller => "users" , :action => "new"
+  map.logout "/logout", :controller => "sessions", :action => "destroy"
 
   map.resources :users, :has_one => [:password, :confirmation]
   map.resource :session
   map.resources :passwords
 
-  map.resources :timelines, :only  => [:index, :new, :create]
+  map.resources :timelines, :only  => [:index, :new, :create], :member => {:stop => :get}
 
   map.root :controller => "timelines"
+
+  map.report "/report", :controller => "report", :action => "index"
+
+  map.search "/search", :controller => "report", :action => "search"
   
   # The priority is based upon order of creation: first created -> highest priority.
 

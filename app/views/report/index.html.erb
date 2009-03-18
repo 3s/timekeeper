@@ -1,0 +1,43 @@
+<%form_tag(search_path) do%>
+
+  <%=label_tag :user %>:
+  <%=text_field_tag :user %><br />
+
+  <%=label_tag :customer %>:
+  <%=text_field_tag :customer, nil, :id => "customer" %><br />
+
+  <%=label_tag "from_date" %>:
+  <%=text_field_tag "from_date" %><br />
+
+  <%=label_tag "to_date" %>:
+  <%=text_field_tag "to_date" %><br />
+
+  <%=submit_tag "Report" %><br />
+
+<%end%>
+<% if @timelines && !@timelines.empty?%>
+  <table id="tbl">
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+    <th>Subject</th>
+    <th>Client</th>
+    <th>Time</th>
+  </tr>
+
+  <% @timelines.each do |t|%>
+    <tr>
+      <td><%=t.user.email %></td>
+      <td><%=t.time_spend_at.strftime("%d/%m/%Y")%></td>
+      <td><%=t.what %></td>
+      <td><%=t.customer.name if t.customer %></td>
+      <td><%=format_spend t.time_spend%></td>
+    </tr>
+
+<%end %>
+
+   </table>
+<p />
+Total work time: <%=format_spend @total_time_spend %>
+
+<%end%>

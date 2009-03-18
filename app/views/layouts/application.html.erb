@@ -1,9 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
   <head>
-    <title>Timekeeper</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="http://dev.jquery.com/view/trunk/plugins/autocomplete/demo/main.css" type="text/css" />
+    <link rel="stylesheet" href="http://dev.jquery.com/view/trunk/plugins/autocomplete/jquery.autocomplete.css" type="text/css" />
+    <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/autocomplete/lib/jquery.bgiframe.min.js"></script>
+    <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/autocomplete/lib/jquery.dimensions.js"></script>
+    <script type="text/javascript" src="http://dev.jquery.com/view/trunk/plugins/autocomplete/jquery.autocomplete.js"></script>
+    <script>
+      $(document).ready(function(){
+        var customer = "<%= Customer.all.collect{ |c| c.name}.join(" ") %>".split(" ");
+
+        var user = "<%= User.all.collect{ |c| c.email}.join(" ") %>".split(" ");
+        $("#timeline_customer_name").autocomplete(customer);
+        $("#customer").autocomplete(customer,{mustMatch:true});
+        $("#user").autocomplete(user,{mustMatch:true});
+      });
+    </script>
+
     <link href="/stylesheets/table.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <title>Timekeeper</title>
   </head>
+
   <body>
+    <div class="log">
+      <%if signed_in?%>
+      <%=current_user.email%>
+      <%=link_to("logout", logout_path)%>
+      <%end%>
+      
+    </div>
     <h2>Timekeeper</h2>
     <%=yield%>
   </body>
