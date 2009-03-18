@@ -1,8 +1,0 @@
-<%= debug(request.env["HTTP_USER_AGENT"]) %>
-
-<h2>Sign up</h2>
-
-<% form_for @user do |form| %>
-  <%= render :partial => '/users/form', :object => form %>
-  <%= form.submit 'Sign up', :disable_with => 'Please wait...' %>
-<% end %>
