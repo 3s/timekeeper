@@ -8,10 +8,10 @@
   <%= f.text_field :what %><br />
 
   <%= f.label :customer_name %>:
-  <%= f.text_field :customer_name %><br />
+  <%= f.text_field :customer_name, :value => (@timeline.customer.name if @timeline.customer) %><br />
 
   <%= f.label :time_spend_at_free, "When" %>:
-  <%= f.text_field :time_spend_at_free %><br />
+  <%= f.text_field :time_spend_at_free, :value => (@timeline.time_spend_at.strftime("%d/%m/%Y") if @timeline.time_spend_at)  %><br />
 
   <%= f.label :time_spend %>:
   <%= f.text_field :time_spend %> or

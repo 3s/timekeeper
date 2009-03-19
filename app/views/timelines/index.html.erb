@@ -1,4 +1,5 @@
 <%#*<h1>Timelines#index</h1>%>
+
 <% if !@stoptime.empty? %>
   <% @stoptime.each do |t|%>
     <h2>Started</h2>
@@ -13,7 +14,7 @@
 
       <tr>
         <td><%=t.user.email %></td>
-        <td><%=t.time_spend_at.strftime("%d/%m/%Y")%></td>
+          <td><%=t.time_spend_at.strftime("%d/%m/%Y") if t.time_spend_at%></td>
         <td><%=t.what %></td>
         <td><%=t.customer.name if t.customer %></td>
         <td><%=link_to_if(t.user_id == current_user.id, "stop", stop_timeline_path(t))%></td>
@@ -32,15 +33,17 @@
     <th>Subject</th>
     <th>Client</th>
     <th>Time</th>
+    <th>Edit</th>
   </tr>
 
   <% @timelines.each do |t|%>
     <tr>
       <td><%=t.user.email %></td>
-      <td><%=t.time_spend_at.strftime("%d/%m/%Y")%></td>
+        <td><%=t.time_spend_at.strftime("%d/%m/%Y") if t.time_spend_at%></td>
       <td><%=t.what %></td>
       <td><%=t.customer.name if t.customer %></td>
       <td><%=format_spend t.time_spend%></td>
+      <td><%=link_to_if(t.user_id == current_user.id, "edit", edit_timeline_path(t))%></td>
     </tr>
   <% end %>
 

@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
   map.resources :passwords
 
-  map.resources :timelines, :only  => [:index, :new, :create], :member => {:stop => :get}
+  map.resources :timelines, :only  => [:index, :new, :create, :edit, :update], :member => {:stop => :get}
 
   map.root :controller => "timelines"
 

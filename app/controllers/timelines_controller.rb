@@ -17,6 +17,24 @@ class TimelinesController < ApplicationController
     end
     redirect_to(timelines_path)
   end
+
+  def edit
+    @timeline = Timeline.find(params[:id])
+    if @timeline.user_id == current_user.id
+      render :action => "new"
+    else
+      redirect_to(timelines_path)
+    end
+  end
+
+  def update
+    @timeline = Timeline.find(params[:id])
+    if @timeline.update_attributes(params[:timeline])
+    redirect_to(timelines_path)
+    else
+      render :action => "new"
+    end
+  end
  
   def create
     @timeline = Timeline.new(params[:timeline])

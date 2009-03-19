@@ -6,7 +6,9 @@ class Timeline < ActiveRecord::Base
   belongs_to :customer
 
   attr_reader :time_spend_at_free
-  validates_presence_of(:what, :time_spend_at, :user_id, :customer_id)
+  validates_presence_of(:what, :user_id, :customer_id)
+  validates_presence_of(:time_spend_at, :on => :create, :if => Proc.new { |t| t.time_spend })
+
   validates_numericality_of :time_spend, :allow_nil => true
   named_scope :recent, {:limit => 10, :order => "created_at DESC"}
   named_scope :by_customer, { :order => "customer, time_spend_at ASC"}
@@ -31,7 +33,7 @@ class Timeline < ActiveRecord::Base
 
     after_transition :on => :start do |t|
       puts "setting start"
-      t.started_at = Time.now
+      t.time_spend_at = t.started_at = Time.now
       puts t.started_at
     end
 
