@@ -15,12 +15,16 @@ class Timeline < ActiveRecord::Base
   
   def time_spend_at_free=(something)
     n = Time.now
+   
     begin
       case something.downcase
       when "today" then self.time_spend_at = n
       when "tomorrow" then self.time_spend_at = n + (3600*24)
       when "yesterday" then self.time_spend_at = n - (3600*24)
       when /\d+ days* ago/ then self.time_spend_at = n - (3600*24*something[/\d+/].to_i)
+      when /(\d{1,2})\/(\d{1,2})\/(\d{4})/ then
+        a = /(\d{1,2})\/(\d{1,2})\/(\d{4})/.match(something)
+        self.time_spend_at = DateTime.parse "#{a.captures[1]}/#{a.captures[0]}/#{a.captures[2]}"
       else
         self.time_spend_at = something
       end
