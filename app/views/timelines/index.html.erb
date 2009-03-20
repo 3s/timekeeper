@@ -1,5 +1,3 @@
-<%#*<h1>Timelines#index</h1>%>
-
 <% if !@stoptime.empty? %>
   <% @stoptime.each do |t|%>
     <h2>Started</h2>
@@ -24,6 +22,7 @@
 </table>
 
 <p />
-
+<%- unless @timelines.empty? -%>
 <h2>Completed</h2>
 <%= render(:partial => "/timelines/table", :object => @timelines) %>
+<%end%>
