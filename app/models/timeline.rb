@@ -10,12 +10,11 @@ class Timeline < ActiveRecord::Base
   validates_presence_of(:time_spend_at, :on => :create, :if => Proc.new { |t| t.time_spend })
   validates_numericality_of :time_spend, :allow_nil => true
   
-  named_scope :recent, {:limit => 10, :order => "created_at DESC"}
+  named_scope :recent, {:conditions => {:state => "completed"}, :limit => 10, :order => "created_at DESC"}
 
   
   def time_spend_at_free=(something)
     n = Time.now
-   
     begin
       case something.downcase
       when "today" then self.time_spend_at = n
