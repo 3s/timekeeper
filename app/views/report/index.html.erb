@@ -2,42 +2,24 @@
 
   <p><%=label_tag :user %>
   <%=text_field_tag :user %></p>
-<br />
+  <br />
   <p><%=label_tag :customer %>
   <%=text_field_tag :customer, nil, :id => "customer" %></p>
-<br />
- <p> <%=label_tag "from_date" %>
+  <br />
+  <p> <%=label_tag "from_date" %>
   <%=text_field_tag "from_date" %></p>
-<br />
+  <br />
   <p><%=label_tag "to_date" %>
   <%=text_field_tag "to_date" %></p>
-<br />
+  <br />
   <%=submit_tag "Report" %><br />
 
 <%end%>
+<br />
 <% if @timelines && !@timelines.empty?%>
-  <table id="tbl">
-  <tr>
-    <th>User</th>
-    <th>Date</th>
-    <th>Subject</th>
-    <th>Client</th>
-    <th>Time</th>
-  </tr>
+  Total time: <%=format_spend @total_time_spend %>
+  <%= render(:partial => "/timelines/table", :object => @timelines) %>
+  <p />
 
-  <% @timelines.each do |t|%>
-    <tr>
-      <td><%=t.user.email %></td>
-      <td><%=t.time_spend_at.strftime("%d/%m/%Y")%></td>
-      <td><%=t.what %></td>
-      <td><%=t.customer.name if t.customer %></td>
-      <td><%=format_spend t.time_spend%></td>
-    </tr>
-
-<%end %>
-
-   </table>
-<p />
-Total work time: <%=format_spend @total_time_spend %>
 
 <%end%>
