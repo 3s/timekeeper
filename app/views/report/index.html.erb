@@ -1,17 +1,17 @@
 <%form_tag(search_path) do%>
 
-  <%=label_tag :user %>:
-  <%=text_field_tag :user %><br />
-
-  <%=label_tag :customer %>:
-  <%=text_field_tag :customer, nil, :id => "customer" %><br />
-
-  <%=label_tag "from_date" %>:
-  <%=text_field_tag "from_date" %><br />
-
-  <%=label_tag "to_date" %>:
-  <%=text_field_tag "to_date" %><br />
-
+  <p><%=label_tag :user %>
+  <%=text_field_tag :user %></p>
+<br />
+  <p><%=label_tag :customer %>
+  <%=text_field_tag :customer, nil, :id => "customer" %></p>
+<br />
+ <p> <%=label_tag "from_date" %>
+  <%=text_field_tag "from_date" %></p>
+<br />
+  <p><%=label_tag "to_date" %>
+  <%=text_field_tag "to_date" %></p>
+<br />
   <%=submit_tag "Report" %><br />
 
 <%end%>

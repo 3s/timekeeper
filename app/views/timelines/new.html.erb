@@ -4,18 +4,19 @@
 
 <% form_for @timeline do |f| %>
 
-  <%= f.label :what %>:
-  <%= f.text_field :what %><br />
-
-  <%= f.label :customer_name %>:
-  <%= f.text_field :customer_name, :value => (@timeline.customer.name if @timeline.customer) %><br />
-
-  <%= f.label :time_spend_at_free, "When" %>:
-  <%= f.text_field :time_spend_at_free, :value => (@timeline.time_spend_at.strftime("%d/%m/%Y") if @timeline.time_spend_at) %><br />
-
-  <%= f.label :time_spend %>:
+  <p><%= f.label :what %>
+  <%= f.text_field :what %></p>
+<br />
+  <p><%= f.label :customer_name %>
+  <%= f.text_field :customer_name, :value => (@timeline.customer.name if @timeline.customer) %></p>
+<br />
+  <p><%= f.label :time_spend_at_free, "When" %>
+  <%= f.text_field :time_spend_at_free, :value => (@timeline.time_spend_at.strftime("%d/%m/%Y") if @timeline.time_spend_at) %></p>
+<br />
+  <p><%= f.label :time_spend %>
   <%= f.text_field :time_spend %> or
-  <%= f.submit "start" %><br />
-
-  <%= f.submit %><br />
+  <%= f.submit "start" %></p>
+<br />
+  <p><%= f.submit %></p>
+  <br />
 <% end %>

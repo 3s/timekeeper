@@ -9,7 +9,8 @@
 body{
     font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
     color: #4f6b72;
-    background: #E6EAE9;
+    background: #E6EAE9 url(/images/timekeeper_bg3.jpg) no-repeat;
+    background-position: top right;
 }
 
 A:link {
@@ -53,7 +54,7 @@ th {
     text-transform: uppercase;
     text-align: center;
     padding: 6px 6px 6px 12px;
-    background: #CAE8EA url(/images/bg_header.jpg) no-repeat;
+    background: #CAE8EA url(/images/table_hd.jpg) no-repeat;
 }
 
 td.a {
@@ -85,3 +86,14 @@ input {
     color: #4f6b72;
 }
 
+.lab{
+    margin-left: 15px;
+}
+
+.text_field{
+        margin-left: 15px;
+}
+
+.login{
+    margin-top: -30px;
+}
