@@ -11,6 +11,7 @@
     <script>
       $(document).ready(function(){
         var customer = "<%= Customer.all.collect{ |c| c.name}.join(" ") %>".split(" ");
+        
         var user = "<%= User.all.collect{ |c| c.email}.join(" ") %>".split(" ");
         $("#timeline_customer_name").autocomplete(customer);
         $("#customer").autocomplete(customer,{mustMatch:true});

@@ -8,15 +8,15 @@ class Timeline < ActiveRecord::Base
   attr_reader :time_spend_at_free
   validates_presence_of(:what, :user_id, :customer_id)
   validates_presence_of(:time_spend_at, :on => :create, :if => Proc.new { |t| t.time_spend })
-
   validates_numericality_of :time_spend, :allow_nil => true
+  
   named_scope :recent, {:limit => 10, :order => "created_at DESC"}
-  named_scope :by_customer, { :order => "customer, time_spend_at ASC"}
+
   
   def time_spend_at_free=(something)
     n = Time.now
     begin
-      case something
+      case something.downcase
       when "today" then self.time_spend_at = n
       when "tomorrow" then self.time_spend_at = n + (3600*24)
       when "yesterday" then self.time_spend_at = n - (3600*24)

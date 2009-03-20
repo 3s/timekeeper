@@ -1,7 +1,7 @@
 class TimelinesController < ApplicationController
 
   def index
-    @timelines = Timeline.find_all_by_state("completed")
+    @timelines = Timeline.recent
     @stoptime = Timeline.find_all_by_state("started")
   end
 
@@ -34,6 +34,14 @@ class TimelinesController < ApplicationController
     else
       render :action => "new"
     end
+  end
+
+  def destroy
+        @timeline = Timeline.find(params[:id])
+    if @timeline.user_id == current_user.id
+      @timeline.destroy
+    end
+      redirect_to(timelines_path)
   end
  
   def create
